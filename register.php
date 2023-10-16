@@ -26,7 +26,8 @@
             $conexion = pg_connect( "user=".$usuario." ".
                                 "password=".$pass." ".
                                 "host=".$host." ".
-                                "dbname=".$bd
+                                "dbname=".$bd." ".
+                                "port=".$port
                               ) or die( "Error al conectar: ".pg_last_error() );
 
         return $conexion;
