@@ -1,7 +1,7 @@
 <?php
     
     try{
-         $conexion = new PDO('mysql:host=app-bb69b715-1dd4-4374-b5b5-dc9b8529f414-do-user-14722467-0.b.db.ondigitalocean.com;dbname=db', 'db', 'AVNS_gJakkJxzypCA5wlJ7tb');
+         $conexion = new PDO('mysql:host=104.248.118.220;dbname=prueba', 'root', 'root1234');
     }catch(PDOException $prueba_error){
         echo "Error: " . $prueba_error->getMessage();
     }
