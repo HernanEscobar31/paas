@@ -19,7 +19,7 @@
             }
         
         $statement = $conexion->prepare('
-        SELECT * FROM login WHERE usuario = :usuario AND clave = :clave'
+        SELECT * FROM login_tuto WHERE usuario = :usuario AND clave = :clave'
         );
         
         $statement->execute(array(
