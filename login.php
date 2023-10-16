@@ -13,9 +13,17 @@
         $clave = hash('sha512', $clave);
         
         try{
-            $conexion = new PDO('mysql:host=http://104.248.118.220/;dbname=prueba', 'root', 'root1234');
-            }catch(PDOException $prueba_error){
-                echo "Error: " . $prueba_error->getMessage();
+// detalles de la conexion
+$conn_string = "host=app-2bbb20e4-f2f2-4768-b331-cc0fbd916b61-do-user-14722467-0.b.db.ondigitalocean.com port=25060 dbname=db user=pdb password=AVNS_4mHvhKIF8I9AyZS5gOv options='--client_encoding=UTF8'";
+
+// establecemos una conexion con el servidor postgresSQL
+$dbconn = pg_connect($conn_string);
+
+// Revisamos el estado de la conexion en caso de errores. 
+if(!$dbconn) {
+echo "Error: No se ha podido conectar a la base de datos\n";
+} else {
+echo "Conexión exitosa\n";
             }
         
         $statement = $conexion->prepare('
