@@ -11,8 +11,21 @@
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
         $clave = hash('sha512', $clave);
+
+        $driver = 'pgsql';
+        $host = getenv('host');
+        $port = getenv('port');
+        $dbname = getenv('dbname');
+        $user =   getenv('user');
+        $password = getenv('password');
         
-        $conexion = pg_connect("host=app-2bbb20e4-f2f2-4768-b331-cc0fbd916b61-do-user-14722467-0.b.db.ondigitalocean.com dbname=db user=db password=AVNS_gN537HosKlBDReoK68u");
+        try{
+            //$conexion = new PDO('mysql:host=localhost;dbname=login_tuto', 'josejaime', 'admin1234');
+            $conexion = new PDO("$driver:host=$host;port=$port;dbname=$dbname", $user, $password);
+        
+        }catch(PDOException $prueba_error){
+                echo "Error: " . $prueba_error->getMessage();
+            }
         
         $statement = $conexion->prepare('
         SELECT * FROM login WHERE usuario = :usuario AND clave = :clave'
